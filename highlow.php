@@ -7,7 +7,6 @@ function randomNumber(){
 	$attempts = 0; 
 
 	fwrite(STDOUT, 'Guess a number between 1 and 100: ') . PHP_EOL;
-
 	$userGuess = fgets(STDIN);
 
 	do {
@@ -25,9 +24,17 @@ function randomNumber(){
 	} while ($userGuess != $rand); 
 
 	if ($userGuess == $rand){
+		$y = 'y'; 
 		$attempts += 1; 
 		fwrite(STDOUT, 'This is why everyone hates you, Professor X.  ') . PHP_EOL; 
-		echo 'It took ' . $attempts . ' attempts'; 
+		echo 'It took ' . $attempts . ' attempts.' . PHP_EOL; 
+		fwrite(STDOUT, 'Would you like to play again?(y/n) ') . PHP_EOL; 
+		$replay = trim(fgets(STDIN));
+		if ($replay == 'y'){
+			randomNumber();
+		}
+		
+
 	} 
 }
 
